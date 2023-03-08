@@ -1,4 +1,4 @@
-package topicmodeling;
+package com.bds.textmining.topicmodeling;
 
 import java.util.ArrayList;
 import java.util.Collections;

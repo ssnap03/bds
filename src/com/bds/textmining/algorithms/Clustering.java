@@ -77,7 +77,7 @@ public class Clustering {
 	
 	private static List<String> getRandomCentroids(List<String> keys, int k) {
 		
-		Collections.shuffle(keys, new Random(5));
+		Collections.shuffle(keys, new Random(2));
 		
 		List<String> randKeys = keys.stream().limit(k).collect(Collectors.toList());
 		
