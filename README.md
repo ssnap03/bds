@@ -1,1 +1,1 @@
-# Descriptive Modeling and Clustering of Textual 
+# Descriptive Modeling and Clustering of Textual Data
