@@ -1,4 +1,4 @@
-package driver;
+package com.bds.textmining.driver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import com.bds.textmining.preprocessing.*;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import topicmodeling.TopicModeler;
-import vectorization.Vectorizer;
+import com.bds.textmining.topicmodeling.TopicModeler;
+import com.bds.textmining.vectorization.Vectorizer;
 
 public class Driver {
 

@@ -1,4 +1,4 @@
-package vectorization;
+package com.bds.textmining.vectorization;
 
 import java.util.ArrayList;
 import java.util.Arrays;

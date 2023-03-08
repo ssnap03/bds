@@ -1,4 +1,4 @@
-package utils;
+package com.bds.textmining.utils;
 
 public class Tuple {
 
