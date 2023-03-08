@@ -1,1 +1,1 @@
-# big_data_science
+# Descriptive Modeling and Clustering of Textual 
