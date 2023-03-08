@@ -1,4 +1,4 @@
-package evaluation;
+package com.bds.textmining.evaluation;
 
 import java.util.Arrays;
 import java.util.HashMap;
