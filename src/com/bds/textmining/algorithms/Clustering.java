@@ -4,15 +4,76 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Clustering {
+	
+	public static Map<Integer,Map<String,List<Double>>> kmeansPlusPlus(Map<String,List<Double>> input, int k, String similarityMeasure) {
+		
+		List<String> centroidKeys = getKMeansPlusPlusCentroids(input,k);
+		
+		Map<Integer,Map<String,List<Double>>> clusters = runKmeans(input,centroidKeys,k,similarityMeasure);
+		
+		return clusters;
+		
+	}
 
 	public static Map<Integer,Map<String,List<Double>>> kmeans(Map<String,List<Double>> input, int k, String similarityMeasure){
+
+		List<String> centroidKeys = getRandomCentroids(input,k);
+
+		Map<Integer,Map<String,List<Double>>> clusters = runKmeans(input,centroidKeys,k,similarityMeasure);
+		
+		return clusters;
+	}
+	
+	private static List<String> getKMeansPlusPlusCentroids(Map<String,List<Double>> input, int k) {
+		List<String> keys = new ArrayList<String>(input.keySet());
+		
+		Collections.shuffle(keys, new Random(5));
+		
+		List<String> centroidKeys = keys.stream().limit(1).collect(Collectors.toList()); 
+		
+		while(centroidKeys.size() < k) {
+			double max_distance = Double.MIN_VALUE;
+			String max_key = null;
+			for(String key : keys) {
+				if(centroidKeys.contains(key))
+					continue;
+				double min_distance = Double.MAX_VALUE;
+				for(String centroidKey : centroidKeys) {
+					double distance = SimilarityMeasures.euclideanDistance(input.get(centroidKey), 
+							input.get(key));
+					distance *= distance;
+					if(distance < min_distance)
+						min_distance = distance;
+				}
+				if(min_distance > max_distance) {
+					max_distance = min_distance;
+					max_key = key;
+				}
+			}
+			centroidKeys.add(max_key);
+		}
+		
+		return centroidKeys;
+	}
+	
+	private static List<String> getRandomCentroids(Map<String,List<Double>> input, int k) {
+		
+		List<String> keys = new ArrayList<String>(input.keySet());
+		
+		Collections.shuffle(keys, new Random(5));
+		
+		List<String> randKeys = keys.stream().limit(k).collect(Collectors.toList());
+		
+		System.out.println(randKeys);
+		
+		return randKeys;
+	
+	}
+	
+private static Map<Integer,Map<String,List<Double>>> runKmeans(Map<String,List<Double>> input, List<String> centroidKeys, int k, String similarityMeasure) {
 		
 		Map<Integer,Map<String,List<Double>>> clusters = new HashMap<Integer,Map<String,List<Double>>>(k);
 		
-		List<String> keys = new ArrayList<String>(input.keySet());
-
-		List<String> centroidKeys = getRandomCentroids(keys,k);
-
 		Map<Integer, List<Double>> centroids = new HashMap<Integer, List<Double>>(k);
 		Map<Integer, List<Double>> prevCentroids = new HashMap<Integer, List<Double>>(k);
 		
@@ -31,7 +92,9 @@ public class Clustering {
 			Map<Integer,Map<String,List<Double>>> tempClusters = new HashMap<Integer,Map<String,List<Double>>>(k);
 			
 			for(int i = 0; i<k; i++)
-				tempClusters.put(i, new HashMap<String,List<Double>>());		
+				tempClusters.put(i, new HashMap<String,List<Double>>());	
+			
+			List<String> keys = new ArrayList<String>(input.keySet());
 			
 			for(String key: keys) {
 				
@@ -71,20 +134,9 @@ public class Clustering {
 			clusters.clear();
 			clusters.putAll(tempClusters);
 		} while(!prevCentroids.equals(centroids));
-		System.out.println("num iterations = "+n_iters);
+		
 		return clusters;
-	}
-	
-	private static List<String> getRandomCentroids(List<String> keys, int k) {
 		
-		Collections.shuffle(keys, new Random(2));
-		
-		List<String> randKeys = keys.stream().limit(k).collect(Collectors.toList());
-		
-		System.out.println(randKeys);
-		
-		return randKeys;
-	
 	}
 	
 	public static List<Double> columnwiseMean(Map<String,List<Double>> input) {
