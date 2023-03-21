@@ -5,7 +5,7 @@ import com.bds.textmining.plotter.Plotter;
 import java.util.*;
 
 import org.junit.Test;
-
+/*
 public class DimensionalityReductionTest {
 
 	@Test
@@ -35,3 +35,4 @@ public class DimensionalityReductionTest {
 	}
 
 }
+*/

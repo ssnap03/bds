@@ -1,5 +1,9 @@
 package com.bds.textmining.topicmodeling;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,7 +17,7 @@ import java.util.Set;
 import com.bds.textmining.preprocessing.FileReader;
 
 import edu.stanford.nlp.util.Pair;
-import utils.Tuple;
+import com.bds.textmining.utils.Tuple;
 
 public class TopicModeler {
 	
@@ -32,7 +36,7 @@ public class TopicModeler {
 		return path.substring(start+1, end);
 	}
 	
-	public void extractTopics(Map<String, List<Double>> features, List<String> vocab, int N) {
+	public void extractTopics(Map<String, List<Double>> features, List<String> vocab, int N) throws IOException {
 		Map<String, List<List<Double>>> m = new HashMap<>(); 
 		Set<String> keys = features.keySet();
 		for(String k : keys){
@@ -48,6 +52,7 @@ public class TopicModeler {
 			idx2Word.put(i, vocab.get(i));
 		}
 		Set<String> folders = m.keySet();
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("topics.txt"));
 
 		for(String f : folders) {
 			List<List<Double>> docVectors = m.get(f);
@@ -68,10 +73,18 @@ public class TopicModeler {
 			Collections.sort(s, Comparator.comparing(p -> -p.second()));
 			
 			
-			
+			System.out.println("Topics extracted from folder "+f+" are: \n");
+
+		    writer.write("Topics extracted from folder "+f+" are: \n");
 			for(int i=0;i<N;i++) {
-				System.out.println(f+ " "+ s.get(i).first+" "+String.valueOf(s.get(i).second));
+				System.out.println(s.get(i).first);
+				writer.write(s.get(i).first+"\n");
 			}
+			System.out.println();
+			writer.write('\n');
+
 		}
+	    writer.close();
+
 	}
 }
