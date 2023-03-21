@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Evaluator {
 	
-	public int[][] computeConfusionMatrix(String[] predicted, String[] actual) {
+	public int[][] computeConfusionMatrix(String[] predicted, String[] actual, int toPrint) {
 	
 	    int c=0;
 	    Map<String, Integer> ind = new HashMap<String, Integer>();
@@ -31,43 +31,46 @@ public class Evaluator {
 	          int y = ind.get(actual[i]);
 	          confMatrix[x][y] += 1;
 	    }
-        System.out.println("\t\t\t\t\t Confusion matrix :");
-
-	    System.out.println("\t\t\t\t\t    Actual Labels");
-    	System.out.print("\t\t\t\t________________________________________");
-
-	    for(int i=0;i<ind.keySet().size()/2;i++) {
-	    	System.out.print("________________________________________");
-
-	    }
-
-	    System.out.print("\n\t Predicted Labels |");
 	    
-	    Set<String> classes = ind.keySet();
-    	System.out.print("\t\t");
-
-	    for(String cl: classes) {
-	    	System.out.print(cl + "\t\t\t");
-	    }
-	    System.out.println();
-	    System.out.print("\t\t\t\t________________________________________");
-
-	    for(int i=0;i<ind.keySet().size()/2;i++)
-		    System.out.print("________________________________________");
-
-
-	    
-    	System.out.println("\n\n");
-    	int p=0;
-    	for(String cl: classes) {
-	    	System.out.print("\t\t\t" + cl + " |");
-	    	for(int i=0;i<ind.keySet().size();i++) {
-	    		System.out.print("\t\t" + confMatrix[p][i]+"\t");
+	    if(toPrint==1) {
+	        System.out.println("\t\t\t\t\t Confusion matrix :");
+	
+		    System.out.println("\t\t\t\t\t    Actual Labels");
+	    	System.out.print("\t\t\t\t________________________________________");
+	
+		    for(int i=0;i<ind.keySet().size()/2;i++) {
+		    	System.out.print("________________________________________");
+	
+		    }
+	
+		    System.out.print("\n\t Predicted Labels |");
+		    
+		    Set<String> classes = ind.keySet();
+	    	System.out.print("\t\t");
+	
+		    for(String cl: classes) {
+		    	System.out.print(cl + "\t\t\t");
+		    }
+		    System.out.println();
+		    System.out.print("\t\t\t\t________________________________________");
+	
+		    for(int i=0;i<ind.keySet().size()/2;i++)
+			    System.out.print("________________________________________");
+	
+	
+		    
+	    	System.out.println("\n\n");
+	    	int p=0;
+	    	for(String cl: classes) {
+		    	System.out.print("\t\t\t" + cl + " |");
+		    	for(int i=0;i<ind.keySet().size();i++) {
+		    		System.out.print("\t\t" + confMatrix[p][i]+"\t");
+		    	}
+		    	System.out.println("\n");
+		    	p++;
+	
 	    	}
-	    	System.out.println("\n");
-	    	p++;
-
-    	}
+	    }
     	return confMatrix;
 
 	}
@@ -82,7 +85,7 @@ public class Evaluator {
 	    		ind.put(predicted[i], c++);
 	    }
 	    int numClasses = ind.keySet().size();
-	    int[][] confMatrix = computeConfusionMatrix(predicted, actual);
+	    int[][] confMatrix = computeConfusionMatrix(predicted, actual, 0);
 	    for(String cl:ind.keySet()) {
 	    	int rc = ind.get(cl);
 	    	int tp = 0, tn = 0, fp = 0, fn = 0;

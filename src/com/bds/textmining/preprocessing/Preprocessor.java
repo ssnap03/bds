@@ -33,10 +33,10 @@ public class Preprocessor {
 		List<String> files = fr.getFilesFromDirectory(dir);
 		words = removeFilename(words, files);
 		
-		FileInputStream fileStreamGoogleStopWords = new FileInputStream("src/googleStopwords.txt");
+		FileInputStream fileStreamGoogleStopWords = new FileInputStream("googleStopwords.txt");
 		BufferedReader brGoogleStopWords = new BufferedReader(new InputStreamReader(fileStreamGoogleStopWords));
 		
-		FileInputStream fileStreamStanfordStopWords = new FileInputStream("src/stanfordCoreNLPStopwords.txt");
+		FileInputStream fileStreamStanfordStopWords = new FileInputStream("stanfordCoreNLPStopwords.txt");
 		BufferedReader brStanfordStopWords = new BufferedReader(new InputStreamReader(fileStreamStanfordStopWords));
 
 		String stopword;

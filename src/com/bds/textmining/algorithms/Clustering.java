@@ -27,7 +27,7 @@ public class Clustering {
 	private static List<String> getKMeansPlusPlusCentroids(Map<String,List<Double>> input, int k) {
 		List<String> keys = new ArrayList<String>(input.keySet());
 		
-		Collections.shuffle(keys, new Random(5));
+		Collections.shuffle(keys, new Random(2));
 		
 		List<String> centroidKeys = keys.stream().limit(1).collect(Collectors.toList()); 
 		
@@ -60,7 +60,7 @@ public class Clustering {
 		
 		List<String> keys = new ArrayList<String>(input.keySet());
 		
-		Collections.shuffle(keys, new Random(5));
+		Collections.shuffle(keys, new Random(2));
 		
 		List<String> randKeys = keys.stream().limit(k).collect(Collectors.toList());
 		

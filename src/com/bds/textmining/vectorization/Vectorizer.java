@@ -61,7 +61,7 @@ public class Vectorizer {
             	tfidf.get(file).set(word2idx.get(w), tfidf.get(file).get(word2idx.get(w))+1);
             }
             for(int i=0;i<vocabList.length;i++) {
-            	tfidf.get(file).set(i,tfidf.get(file).get(i)/wordlist.size());
+            	tfidf.get(file).set(i,tfidf.get(file).get(i));///wordlist.size()
             	int docCount = 0;
             	if(tfidf.get(file).get(i)!=0.0) {
             		 Iterator it = terms.entrySet().iterator();
