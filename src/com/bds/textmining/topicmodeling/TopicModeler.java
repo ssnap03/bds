@@ -52,7 +52,7 @@ public class TopicModeler {
 			idx2Word.put(i, vocab.get(i));
 		}
 		Set<String> folders = m.keySet();
-	    BufferedWriter writer = new BufferedWriter(new FileWriter("topics.txt"));
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("src/topics.txt"));
 
 		for(String f : folders) {
 			List<List<Double>> docVectors = m.get(f);
