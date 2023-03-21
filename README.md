@@ -20,5 +20,4 @@ Instructions to run code (please use Eclipse IDE) :
 
 Contributors:
 
-Abhishek Narayanan 
-Anirudh Nistala
+Abhishek Narayanan & Anirudh Nistala
