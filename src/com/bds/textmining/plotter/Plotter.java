@@ -17,28 +17,25 @@ import java.util.List;
 import org.jfree.chart.ChartPanel;
 
 public class Plotter {
-	public static void plot2d(double[][] input, List<String> labels) {
-	    
-	    JFrame f = new JFrame("Documents");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
+	
+	public static void plot2d(double[][] input) {      
         
         JFreeChart chart = ChartFactory.createScatterPlot(
-	            "Scatter Plot", 
-	            "tfidf", 
-	            "docName", 
+	            "Original Scatter Plot", 
+	            "feature 1", 
+	            "feature 2", 
 	            createDataset(input),
 	            PlotOrientation.VERTICAL,
 	            true,
 	            true,
 	            false
 	            );
-        
-        XYPlot plot = chart.getXYPlot();
-        f.add(new ChartPanel(chart));
-        f.pack();
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
+
+        chart.getXYPlot().getRenderer().setSeriesPaint(0, new Color(Color.BLUE.getRGB()));
+
+        ChartFrame frame = new ChartFrame("Cluster Plot", chart);
+        frame.pack();
+        frame.setVisible(true);
         
 		
 	}
@@ -60,16 +57,16 @@ public class Plotter {
         }
 
         JFreeChart chart = ChartFactory.createScatterPlot(
-        		"Clusters Plot", 
-        		"tfidf", 
-        		"document", 
+        		"Clusters Scatter Plot", 
+        		"feature 1", 
+        		"feature 2", 
         		dataset, 
         		PlotOrientation.VERTICAL, 
         		true, 
         		true, 
         		false);
 
-        int[] colors = {Color.GREEN.getRGB(), Color.YELLOW.getRGB(), Color.RED.getRGB(), Color.BLUE.getRGB(), Color.ORANGE.getRGB()};
+        int[] colors = {Color.BLUE.getRGB(), Color.ORANGE.getRGB(), Color.GREEN.getRGB()};
         int i = 0;
         for (Object seriesObj : dataset.getSeries()) {
             chart.getXYPlot().getRenderer().setSeriesPaint(i++, new Color(colors[i%colors.length]));
