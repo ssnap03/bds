@@ -15,3 +15,5 @@ Instructions to run code (please use Eclipse IDE) :
 5. The output will display on the console, a text file called topics.txt with the topics extracted will be generated in the src directory and the plots of the clusters will be rendered.
 
 6. Please expect a small delay for output to render as computation of the tf idf matrix and clustering are slightly computationally expensive
+
+7. screenshots of the output are available in the output directory in this repo as well for reference
