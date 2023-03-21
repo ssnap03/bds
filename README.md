@@ -1,6 +1,6 @@
 # Descriptive Modeling and Clustering of Textual Data
 
-Instructions to run code :
+Instructions to run code (please use Eclipse IDE) :
 
 1. Clone this repository to your local machine :
 
