@@ -1,0 +1,30 @@
+Topics extracted from folder C4 are: 
+agriculture
+hoof
+graefe_zu_baringdorf
+france
+crisis
+disease
+mouth_disease
+drug
+
+Topics extracted from folder C7 are: 
+bank
+mr_takenaka
+loan
+mortgage
+rate
+per_cent
+financial
+corporation
+
+Topics extracted from folder C1 are: 
+airline
+pilot
+part
+civil_aeronautics
+jet
+safety
+spare
+standard
+
