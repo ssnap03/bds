@@ -16,4 +16,4 @@ Instructions to run code (please use Eclipse IDE) :
 
 6. Please expect a small delay for output to render as computation of the tf idf matrix and clustering are slightly computationally expensive
 
-7. screenshots of the output are available in the output directory in this repo as well for reference
+7. screenshots of the output are available in the output directory in this repo as well for reference along with the generated topics.txt file containing the output of topic modeling
