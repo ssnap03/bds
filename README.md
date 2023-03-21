@@ -13,3 +13,5 @@ Instructions to run code (please use Eclipse IDE) :
 4. Once the dependencies are resolved, from the file explorer on the left pane, navigate to com.bds.textmining.driver.Driver.java, right click on this class and click run as -> java application
 
 5. The output will display on the console, a text file called topics.txt with the topics extracted will be generated in the src directory and the plots of the clusters will be rendered.
+
+6. Please expect a small delay for output to render as computation of the tf idf matrix and clustering are slightly computationally expensive
